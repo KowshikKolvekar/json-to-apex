@@ -26,8 +26,14 @@
       padding: 20px;
       text-align: center;
       color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    header img {
+      height: 32px;
     }
 
     .container {
@@ -37,6 +43,7 @@
       background: var(--card-bg);
       border-radius: 12px;
       box-shadow: var(--shadow);
+      position: relative;
     }
 
     h2 {
@@ -44,6 +51,13 @@
       font-size: 1.8rem;
       text-align: center;
       color: var(--primary-color);
+    }
+
+    .astro-img {
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 120px;
     }
 
     textarea {
@@ -101,6 +115,12 @@
       margin-top: 50px;
     }
 
+    footer img {
+      height: 30px;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+
     @media screen and (max-width: 600px) {
       .container {
         margin: 15px;
@@ -110,14 +130,25 @@
       textarea {
         height: 150px;
       }
+
+      .astro-img {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <header>JSON to Apex Class Generator</header>
+
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png" alt="Salesforce Logo" />
+    <span>JSON to Apex Class Generator</span>
+  </header>
 
   <div class="container">
+    <img class="astro-img" src="https://trailhead.salesforce.com/assets/characters/astro-7e13e3d273ec8c731e7d62cf45ed91c7d58e85b3a35ffb0ac1ef85f0872b1b77.svg" alt="Astro Character" />
+
     <h2>Convert JSON into Salesforce Apex Wrapper Class</h2>
+
     <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
     <button onclick="generateApex()">Generate Apex Class</button>
 
@@ -126,7 +157,8 @@
   </div>
 
   <footer>
-    Built with 💙 for Salesforce devs by Kowshik | Open Source
+    Built with 💙 for Salesforce Devs by Kowshik Kolvekar
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Trailhead_Logo.svg/512px-Trailhead_Logo.svg.png" alt="Trailhead Logo" />
   </footer>
 
   <script>
@@ -158,5 +190,6 @@
       }
     }
   </script>
+
 </body>
 </html>
