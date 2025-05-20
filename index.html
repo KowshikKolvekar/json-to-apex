@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JSON to Apex Class | Salesforce Tool</title>
+  <title>JSON to Apex Class | Salesforce Utility</title>
   <link rel="icon" href="https://www.salesforce.com/favicon.ico" />
   <style>
     :root {
@@ -11,11 +11,7 @@
       --bg-light: #f4f6f9;
       --card-bg: #ffffff;
       --text-color: #1a1a1a;
-      --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    * {
-      box-sizing: border-box;
+      --shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
     body {
@@ -27,52 +23,26 @@
 
     header {
       background-color: var(--primary-color);
+      padding: 20px;
+      text-align: center;
       color: white;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    .astro img {
-      max-width: 200px;
-      width: 100%;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 30px auto;
+      padding: 25px;
       background: var(--card-bg);
       border-radius: 12px;
       box-shadow: var(--shadow);
-      display: flex;
-      flex-wrap: wrap;
-      padding: 30px;
-    }
-
-    .form-section {
-      flex: 1 1 500px;
-      padding: 10px 20px;
-    }
-
-    .image-section {
-      flex: 1 1 300px;
-      text-align: center;
-      padding: 10px;
     }
 
     h2 {
+      margin-top: 0;
       font-size: 1.8rem;
+      text-align: center;
       color: var(--primary-color);
     }
 
@@ -96,11 +66,19 @@
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
+      display: block;
+      margin: 0 auto;
       transition: background 0.3s;
     }
 
     button:hover {
       background-color: #007eb6;
+    }
+
+    h3 {
+      color: #333;
+      margin-top: 30px;
+      font-size: 1.4rem;
     }
 
     pre {
@@ -123,48 +101,32 @@
       margin-top: 50px;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 600px) {
       .container {
-        flex-direction: column;
+        margin: 15px;
         padding: 20px;
       }
 
-      .image-section {
-        order: -1;
-        margin-bottom: 20px;
-      }
-
-      .astro img {
-        max-width: 150px;
+      textarea {
+        height: 150px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png" alt="Salesforce Logo">
-      <span>JSON to Apex Class Generator</span>
-    </div>
-  </header>
+  <header>JSON to Apex Class Generator</header>
 
   <div class="container">
-    <div class="form-section">
-      <h2>Convert JSON into Salesforce Apex Wrapper Class</h2>
-      <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
-      <button onclick="generateApex()">Generate Apex Class</button>
+    <h2>Convert JSON into Salesforce Apex Wrapper Class</h2>
+    <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
+    <button onclick="generateApex()">Generate Apex Class</button>
 
-      <h3 style="margin-top: 30px;">Apex Wrapper Class:</h3>
-      <pre id="apexOutput">/* Your Apex class will appear here */</pre>
-    </div>
-
-    <div class="image-section astro">
-      <img src="https://developer.salesforce.com/resources2/Trailhead/assets/trailhead-home/astro.png" alt="Astro from Salesforce">
-    </div>
+    <h3>Apex Wrapper Class:</h3>
+    <pre id="apexOutput">/* Your Apex class will appear here */</pre>
   </div>
 
   <footer>
-    Built with 💙 for Salesforce devs by Kowshik Kolvekar | Powered by GitHub Pages
+    Built with 💙 for Salesforce devs by Kowshik | Open Source | CodeWithKowshik
   </footer>
 
   <script>
