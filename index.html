@@ -3,19 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JSON to Apex Class</title>
+  <title>JSON to Apex Class Generator</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    textarea { width: 100%; height: 150px; }
-    pre { background: #f4f4f4; padding: 10px; white-space: pre-wrap; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      max-width: 900px;
+      width: 95%;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: #333;
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      background-color: #fafafa;
+    }
+
+    button {
+      display: inline-block;
+      background-color: #0070d2;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+    }
+
+    h3 {
+      margin-top: 30px;
+      color: #444;
+    }
+
+    pre {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    @media screen and (max-width: 600px) {
+      textarea {
+        height: 150px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>JSON to Apex Class Generator</h2>
-  <textarea id="jsonInput" placeholder="Paste your JSON here"></textarea><br/><br/>
-  <button onclick="generateApex()">Generate Apex Class</button>
-  <h3>Apex Wrapper Class:</h3>
-  <pre id="apexOutput"></pre>
+  <div class="container">
+    <h2>JSON to Apex Class Generator</h2>
+    <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
+    <button onclick="generateApex()">Generate Apex Class</button>
+    <h3>Apex Wrapper Class:</h3>
+    <pre id="apexOutput">/* Apex class will appear here after generation */</pre>
+  </div>
 
   <script>
     function generateApex() {
@@ -42,7 +123,7 @@
         apex += '}';
         document.getElementById("apexOutput").textContent = apex;
       } catch (e) {
-        document.getElementById("apexOutput").textContent = "Invalid JSON!";
+        document.getElementById("apexOutput").textContent = "⚠️ Invalid JSON!";
       }
     }
   </script>
