@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JSON to Apex Class</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    textarea { width: 100%; height: 150px; }
+    pre { background: #f4f4f4; padding: 10px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h2>JSON to Apex Class Generator</h2>
+  <textarea id="jsonInput" placeholder="Paste your JSON here"></textarea><br/><br/>
+  <button onclick="generateApex()">Generate Apex Class</button>
+  <h3>Apex Wrapper Class:</h3>
+  <pre id="apexOutput"></pre>
+
+  <script>
+    function generateApex() {
+      const jsonInput = document.getElementById("jsonInput").value;
+      try {
+        const json = JSON.parse(jsonInput);
+        let apex = 'public class Wrapper {\n';
+        for (let key in json) {
+          const val = json[key];
+          let type = typeof val;
+          if (Array.isArray(val)) {
+            type = 'List<Object>';
+          } else if (type === 'number') {
+            type = val % 1 === 0 ? 'Integer' : 'Decimal';
+          } else if (type === 'boolean') {
+            type = 'Boolean';
+          } else if (type === 'object') {
+            type = 'Object';
+          } else {
+            type = 'String';
+          }
+          apex += `    public ${type} ${key};\n`;
+        }
+        apex += '}';
+        document.getElementById("apexOutput").textContent = apex;
+      } catch (e) {
+        document.getElementById("apexOutput").textContent = "Invalid JSON!";
+      }
+    }
+  </script>
+</body>
+</html>
