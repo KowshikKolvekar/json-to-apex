@@ -3,34 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JSON to Apex Class Generator</title>
+  <title>JSON to Apex Class | Salesforce Utility</title>
+  <link rel="icon" href="https://www.salesforce.com/favicon.ico" />
   <style>
+    :root {
+      --primary-color: #00a1e0;
+      --bg-light: #f4f6f9;
+      --card-bg: #ffffff;
+      --text-color: #1a1a1a;
+      --shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
       margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
+      font-family: 'Salesforce Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
 
     .container {
-      background: #fff;
       max-width: 900px;
-      width: 95%;
-      margin: 40px auto;
-      padding: 30px;
+      margin: 30px auto;
+      padding: 25px;
+      background: var(--card-bg);
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow);
     }
 
     h2 {
       margin-top: 0;
       font-size: 1.8rem;
-      color: #333;
       text-align: center;
+      color: var(--primary-color);
     }
 
     textarea {
@@ -40,63 +53,81 @@
       font-size: 14px;
       border-radius: 8px;
       border: 1px solid #ccc;
-      resize: vertical;
+      background-color: #fefefe;
       box-sizing: border-box;
       margin-bottom: 20px;
-      background-color: #fafafa;
     }
 
     button {
-      display: inline-block;
-      background-color: #0070d2;
+      background-color: var(--primary-color);
       color: white;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 12px 24px;
       border: none;
       border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      display: block;
+      margin: 0 auto;
+      transition: background 0.3s;
     }
 
     button:hover {
-      background-color: #005bb5;
+      background-color: #007eb6;
     }
 
     h3 {
+      color: #333;
       margin-top: 30px;
-      color: #444;
+      font-size: 1.4rem;
     }
 
     pre {
-      background-color: #272822;
-      color: #f8f8f2;
+      background-color: #f0f3f8;
+      color: #222;
       padding: 15px;
       border-radius: 8px;
       overflow-x: auto;
-      white-space: pre-wrap;
-      word-wrap: break-word;
       font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+      margin-top: 50px;
     }
 
     @media screen and (max-width: 600px) {
-      textarea {
-        height: 150px;
+      .container {
+        margin: 15px;
+        padding: 20px;
       }
 
-      .container {
-        padding: 20px;
+      textarea {
+        height: 150px;
       }
     }
   </style>
 </head>
 <body>
+  <header>JSON to Apex Class Generator</header>
+
   <div class="container">
-    <h2>JSON to Apex Class Generator</h2>
+    <h2>Convert JSON into Salesforce Apex Wrapper Class</h2>
     <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
     <button onclick="generateApex()">Generate Apex Class</button>
+
     <h3>Apex Wrapper Class:</h3>
-    <pre id="apexOutput">/* Apex class will appear here after generation */</pre>
+    <pre id="apexOutput">/* Your Apex class will appear here */</pre>
   </div>
+
+  <footer>
+    Built with 💙 for Salesforce devs by Kowshik | Open Source
+  </footer>
 
   <script>
     function generateApex() {
